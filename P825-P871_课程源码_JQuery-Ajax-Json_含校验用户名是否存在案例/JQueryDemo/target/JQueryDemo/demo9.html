@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM操作-内容操作</title>
+    <!--在Maven中，利用POM引入jquery，就必须启动项目，jq的语法才能起效-->
+    <script src="webjars/jquery/3.1.1/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        <!--入口函数是必备的-->
+        $(function () {
+            //获取myinput的value值
+            var value = $("#myinput").val();
+            alert(value);//张三
+            $("#myinput").val("李四");
+            //获取mydiv的标签体内容
+            var html = $("#mydiv").html();
+            alert(html);//<p><a href="#">标题标签</a></p>
+            $("#mydiv").html("<p>aaa<p>");
+            //获取mydiv文本内容
+            var text = $("#mydiv").text();
+            alert(text);//aaa
+            $("#mydiv").text("bbb");
+        })
+    </script>
+
+
+</head>
+<body>
+
+<input type="text" name="username" value="张三" id="myinput"/><br/>
+<div id="mydiv"><p><a href="#">标题标签</a></p></div>
+
+</body>
+</html>

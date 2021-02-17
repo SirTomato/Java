@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQuery-案例-抽奖</title>
+    <!--在Maven中，利用POM引入jquery，就必须启动项目，jq的语法才能起效-->
+    <script src="webjars/jquery/3.1.1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+
+    <script type="text/javascript">
+        var startID;//开始定时器的id
+        var index;//随机角标
+        var arr = ["img/1.png", "img/2.png", "img/3.png", "img/4.png"];
+        $(function () {
+            //给开始按钮绑定单击事件
+            $("#startID").click(function () {
+                //按钮处理
+                $("#startID").prop("disabled",true);
+                $("#stopID").prop("disabled",false);
+                //定义循环定时器
+                startID = setInterval(function () {
+                    // 生成随机数，即数组索引
+                    index = Math.floor(Math.random() * 4);
+                    // 切换大相框的src属性,注意选择器的正确使用#
+                    $("#img1ID").prop("src", arr[index]);
+                }, 20);
+            });
+            //给结束按钮绑定单击事件
+            $("#stopID").click(function () {
+                //按钮处理
+                $("#startID").prop("disabled",false);
+                $("#stopID").prop("disabled",true);
+                // 停止定时器
+                clearInterval(startID);
+                // 给大相框设置src属性
+                $("#img2ID").prop("src", arr[index]).hide().show(1000);
+                // $("#img2ID").show(1000);
+            })
+
+        });
+
+
+    </script>
+</head>
+<body>
+<!--小相框-->
+<div style="border-style: dotted;width: 160px;height: 100px">
+    <img id="img1ID" src="img/1.png" style="height: 100px;width: 160px;">
+</div>
+<!--大相框-->
+<div style="border-style: dotted;width: 800px;height: 500px;position: absolute;left: 500px;top: 10px">
+    <img id="img2ID" src="img/1.png" style="height: 500px;width: 800px;">
+</div>
+<!--开始按钮-->
+<input type="button" id="startID" value="点击开始" style="width:150px;height: 150px;font-size: 22px">
+<!--停止按钮-->
+<input type="button" id="stopID" value="点击停止" style="width:150px;height: 150px;font-size: 22px">
+
+</body>
+</html>

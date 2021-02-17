@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>层级选择器</title>
+    <!--在Maven中，利用POM引入jquery，就必须启动项目，jq的语法才能起效-->
+    <script src="webjars/jquery/3.1.1/jquery.min.js"></script>
+
+    <style>
+        span{
+            background: cornflowerblue;
+            width: 200px;
+            height: 200px;
+            border: black 1px solid;
+            float: left;
+            margin-left: 10px;
+            margin-top: 20px;
+        }
+        div{
+            background: cornflowerblue;
+            width: 200px;
+            height: 200px;
+            border: black 1px solid;
+            float: left;
+            margin-left: 10px;
+            margin-top: 20px;
+        }
+        /*子类选择器的应用*/
+        div .mini{
+            background: deeppink;
+            width: 80px;
+            height: 80px;
+            border: black 1px solid;
+            margin-top: 20px;
+        }
+        div .mini01{
+            background: deeppink;
+            width: 80px;
+            height: 80px;
+            border: black 1px solid;
+            margin-top: 20px;
+        }
+
+    </style>
+
+    <script type="text/javascript">
+        <!--入口函数是必备的-->
+        $(function () {
+            $("#b1").click(function () {
+                $("body div").css("backgroundColor","pink");
+            });
+            $("#b2").click(function () {
+                $("body>div").css("backgroundColor","pink");
+            });
+        })
+    </script>
+
+
+</head>
+<body>
+
+<input type="button" value="保存" class="mini2" name="ok"/>
+<input type="button" value="改变body内所有div的背景色为粉色" id="b1"/>
+<input type="button" value="改变body内子div的背景色为粉色" id="b2"/>
+
+
+<!--增加一个h1可以避免布局变化-->
+<h1>-------------------------------</h1>
+
+
+
+<div id="one">
+    id为one
+</div>
+
+<div id="two" class="mini">
+    id为two，class为mini
+    <div class="mini" id="seven">class为mini</div>
+</div>
+
+<div class="one" id="three">
+    class为one
+    <div class="mini" id="eight">class为mini</div>
+    <div class="mini" id="nine">class为mini</div>
+</div>
+
+<div class="one" id="four">
+    class为one
+    <div class="mini01" id="ten">class为mini01</div>
+    <div class="mini01" id="eleven">class为mini01</div>
+</div>
+
+<span class="spanone" id="five">class为spanone的span元素</span>
+
+<span class="mini" id="six">class为mini的span元素</span>
+</body>
+</html>

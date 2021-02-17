@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Json</title>
+    <!--在Maven中，利用POM引入jquery，就必须启动项目，jq的语法才能起效-->
+    <script src="webjars/jquery/3.1.1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+
+    <script type="text/javascript">
+        //定义基本格式
+        var person = {"name": "张三", age: 23, 'gender': true};//建议键的格式统一
+        alert(person); //[object Object]
+        //获取name的值
+        alert(person.name);//张三
+        alert(person["name"]);//张三
+
+        //嵌套格式1 {} -> [] -> {}
+        var person1 = {
+            "persons": [
+                {"name": "张三", "age": 23, "gender": true},
+                {"name": "李四", "age": 24, "gender": true},
+                {"name": "王五", "age": 25, "gender": false}
+            ]
+        };
+        alert(person1);//[object Object]
+        alert(person1.persons[2].name);//王五
+
+        //嵌套格式2 [] -> {}
+        var person2 = [
+            {"name": "张三", "age": 23, "gender": true},
+            {"name": "李四", "age": 24, "gender": true},
+            {"name": "王五", "age": 25, "gender": false}
+        ];
+        alert(person2);//[object Object],[object Object],[object Object]
+        alert(person2[1].age);//24
+
+
+        //遍历对象及数组中的对象
+
+        //遍历 获取person对象中所有的键和值
+        for (var key in person) {
+            //这样的方式不能获取对象中的键值，key是字符串，相当于person."name"
+            // alert(key+":"+person.key);
+            alert(key + ":" + person[key]);
+        }
+
+        var objs = person1.persons;
+        alert(objs);
+        for (var i = 0; i < objs.length; i++) {
+            var obj = objs[i];
+            for (var key in obj) {
+                alert(key + ":" + obj[key]);
+            }
+        }
+
+        //可采用该方法遍历数组
+        for (var i = 0; i < person2.length; i++) {
+            var p = person2[i];
+            //for in循环，遍历对象
+            for (var key in p) {
+                alert(key + ":" + p[key]);
+            }
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

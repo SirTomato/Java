@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQuery-案例-隔行换色/全选/全不选</title>
+    <!--在Maven中，利用POM引入jquery，就必须启动项目，jq的语法才能起效-->
+    <script src="webjars/jquery/3.1.1/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        function selectAll(obj) {
+            //获取下方的复选框
+            $(".itemSelect").prop("checked",obj.checked);
+        }
+
+    <!--入口函数是必备的-->
+        $(function () {
+            //获取数据行的奇数行的tr，设置背景色为pink, gt(1) 为了不让前两行在颜色设置范围内
+            $("tr:gt(1):odd").css("backgroundColor","pink");
+            //获取数据行的偶数行的tr，设置背景色为yellow
+            $("tr:gt(1):even").css("backgroundColor","yellow");
+        })
+    </script>
+
+
+</head>
+<body>
+
+    <table id="tab1" border="1" width="800" align="center">
+        <tr>
+            <td colspan="5"><input type="button" value="删除"></td>
+        </tr>
+        <tr>
+            <!--组件事件-->
+            <th><input type="checkbox" onclick="selectAll(this)"></th>
+            <th>分类ID</th>
+            <th>分类名称</th>
+            <th>分类描述</th>
+            <th>操作</th>
+        </tr>
+        <tr align="center">
+            <td><input type="checkbox" class="itemSelect"></td>
+            <td>1</td>
+            <td>手机数码</td>
+            <td>手机数码商品</td>
+            <td><input type="button" value="修改"><input type="button" value="删除"></td>
+        </tr>
+        <tr align="center">
+            <td><input type="checkbox" class="itemSelect"></td>
+            <td>2</td>
+            <td>手机数码</td>
+            <td>手机数码商品</td>
+            <td><input type="button" value="修改"><input type="button" value="删除"></td>
+        </tr>
+        <tr align="center">
+            <td><input type="checkbox" class="itemSelect"></td>
+            <td>3</td>
+            <td>手机数码</td>
+            <td>手机数码商品</td>
+            <td><input type="button" value="修改"><input type="button" value="删除"></td>
+        </tr>
+        <tr align="center">
+            <td><input type="checkbox" class="itemSelect"></td>
+            <td>4</td>
+            <td>手机数码</td>
+            <td>手机数码商品</td>
+            <td><input type="button" value="修改"><input type="button" value="删除"></td>
+        </tr>
+    </table>
+
+</body>
+</html>

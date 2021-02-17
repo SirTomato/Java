@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQuery-案例-下拉列表左右移动</title>
+    <!--在Maven中，利用POM引入jquery，就必须启动项目，jq的语法才能起效-->
+    <script src="webjars/jquery/3.1.1/jquery.min.js"></script>
+
+    <style>
+
+    </style>
+    <script type="text/javascript">
+    <!--入口函数是必备的-->
+        $(function () {
+            $("#toRight").click(function () {
+                //获取右边的下拉列表对象，append（左边下拉列表选中的option）
+                $("#rightName").append($("#leftName>option:selected"));
+            });
+            $("#toLeft").click(function () {
+                //获取右边选中的option，将其移动到左边下拉列表中
+                $("#rightName>option:selected").appendTo($("#leftName"));
+            });
+        })
+    </script>
+</head>
+<body>
+    <div class="border">
+        <select id="leftName" multiple="multiple" style="float: left;width:80px;margin-left:10px">
+            <option>张三</option>
+            <option>李四</option>
+            <option>王五</option>
+            <option>赵六</option>
+        </select>
+        <div id="btn" style="float: left">
+            <input type="button" id="toRight" value="-->"><br>
+            <input type="button" id="toLeft" value="<--">
+        </div>
+        <select id="rightName" multiple="multiple" style="float: left;width:80px;margin-left:10px">
+            <option>钱七</option>
+        </select>
+    </div>
+    <br>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQuery-案例-表情选择</title>
+    <!--在Maven中，利用POM引入jquery，就必须启动项目，jq的语法才能起效-->
+    <script src="webjars/jquery/3.1.1/jquery.min.js"></script>
+
+    <style>
+        li{
+            float: left;
+            padding-left: 5px;
+            list-style: none;
+        }
+    </style>
+    <script type="text/javascript">
+    <!--入口函数是必备的-->
+        $(function () {
+            //给img图片添加onclick事件
+            $("ul img").click(function () {
+                //追加到p标签中即可
+                $(".word").append($(this).clone())
+            })
+        })
+    </script>
+</head>
+<body>
+    <div class="emoji">
+        <ul>
+            <li><img src="img/1.png" alt="" height="22" width="22"></li>
+            <li><img src="img/2.png" alt="" height="22" width="22"></li>
+            <li><img src="img/3.png" alt="" height="22" width="22"></li>
+            <li><img src="img/4.png" alt="" height="22" width="22"></li>
+        </ul>
+    </div>
+    <br>
+    <div class="word">
+        <p>请发言：</p>
+    </div>
+</body>
+</html>

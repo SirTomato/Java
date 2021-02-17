@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>register</title>
+    <script>
+        //分析：
+        //点击链接或图片，换一个验证码
+        window.onload = function () {
+            //1、给图片绑定单击事件
+            var img = document.getElementById("checkCode");
+            img.onclick = function () {
+                //添加时间戳
+                var date = new Date().getTime();
+                //2、 重新设置图片的src属性值
+                img.src = "/responsecases_war_exploded/CheckCodeServlet?"+date;
+            };
+
+            //3、给超链接绑定单击事件
+            var a = document.getElementById("change");
+            a.onclick = function () {
+                var date = new Date().getTime();
+                a.href = "/responsecases_war_exploded/register.html";
+            }
+        }
+    </script>
+</head>
+<body>
+<img  id="checkCode" src="/responsecases_war_exploded/CheckCodeServlet" alt="">
+<a id="change" href="">看不清换一张</a>
+</body>
+</html>

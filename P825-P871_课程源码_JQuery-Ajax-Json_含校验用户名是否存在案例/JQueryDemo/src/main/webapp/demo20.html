@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQuery-案例广告显示和隐藏</title>
+    <!--在Maven中，利用POM引入jquery，就必须启动项目，jq的语法才能起效-->
+    <script src="webjars/jquery/3.1.1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            var timeout = setTimeout(adShow,3000);
+            var timeout2 = setTimeout(adHide,8000);
+            //不要添加cleartimeout
+        });
+        function adShow() {
+            $("#ad").show("slow");
+        }
+        function adHide() {
+            $("#ad").hide("slow");
+        }
+    </script>
+</head>
+<body>
+<!--整体的DIV-->
+<div>
+    <div id="ad" style="display: none">
+        <img src="img/1.png" alt="" style="width: 30%">
+    </div>
+    <div>
+        正文内容
+    </div>
+</div>
+
+
+</body>
+</html>

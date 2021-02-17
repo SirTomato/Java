@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>案例-校验用户名是否存在</title>
+    <!--在Maven中，利用POM引入jquery，就必须启动项目，jq的语法才能起效-->
+    <script src="webjars/jquery/3.1.1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+
+    <script type="text/javascript">
+        //入口函数,页面完成加载后
+        $(function () {
+            //给username绑定blur事件
+            $("#username").blur(function () {
+                //获取文本框的值
+                var val = $(this).val();
+                //发送ajax请求
+                //期望服务器响应回的数据格式：
+                $.get("checkServlet",{username:val},function (data) {
+                    var span = $("#s_username");
+                    if (data.userExist){
+                        //用户名已存在，不可用
+                        span.css("color","red");
+                        span.html(data.msg);
+                    }else {
+                        //用户名不存在，可用
+                        span.css("color","green");
+                        span.html(data.msg);
+                    }
+                }/*,"json"*/);
+                //响应回来的数据是一个字符串，没有将其当做json的格式，因此无法用json的方式获取数据
+            });
+
+
+
+        })
+    </script>
+</head>
+<body>
+    <input type="text" id="username" name="username" placeholder="请输入用户名"><span id="s_username"></span><br>
+    <input type="password" id="password" placeholder="请输入密码"><br>
+    <input type="submit" value="注册">
+</body>
+</html>

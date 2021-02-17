@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM操作-class属性操作</title>
+    <!--在Maven中，利用POM引入jquery，就必须启动项目，jq的语法才能起效-->
+    <script src="webjars/jquery/3.1.1/jquery.min.js"></script>
+
+    <style>
+        span{
+            background: cornflowerblue;
+            width: 200px;
+            height: 200px;
+            border: black 1px solid;
+            float: left;
+            margin-left: 10px;
+            margin-top: 20px;
+        }
+        div{
+            background: cornflowerblue;
+            width: 200px;
+            height: 200px;
+            border: black 1px solid;
+            float: left;
+            margin-left: 10px;
+            margin-top: 20px;
+        }
+        /*子类选择器的应用*/
+        div .mini{
+            background: deeppink;
+            width: 80px;
+            height: 80px;
+            border: black 1px solid;
+            margin-top: 20px;
+        }
+        div .mini01{
+            background: deeppink;
+            width: 80px;
+            height: 80px;
+            border: black 1px solid;
+            margin-top: 20px;
+        }
+
+    </style>
+
+    <script type="text/javascript">
+        <!--入口函数是必备的-->
+        $(function () {
+
+            $("#b1").click(function () {
+                //将反恐放置到city后面
+                $("#city").append($("#fk"));
+                $("#fk").appendTo($("#city"));
+            });
+            $("#b2").click(function () {
+                //将反恐放置到city的最前面
+                $("#city").prepend($("#fk"));
+                $("#fk").prependTo($("#city"));
+            });
+            $("#b3").click(function () {
+                //将反恐插入到天津后面
+                $("#tj").after($("#fk"));
+                $("#fk").insertAfter($("#tj"))
+            });
+            $("#b4").click(function () {
+                //将反恐插入到天津前面
+                $("#tj").before($("#fk"));
+                $("#fk").insertBefore($("#tj"))
+            });
+
+            $("#b5").click(function () {
+                //删除北京节点
+                $("#bj").remove();
+            });
+
+            $("#b6").click(function () {
+                //删除city所有的子节点，清空元素中的所有后代节点（保留当前对象以及其属性节点）
+                $("#city").empty();
+            });
+        })
+    </script>
+
+
+</head>
+<body>
+
+<input type="button" value="将反恐放置到city后面" id="b1"/>
+<input type="button" value="将反恐放置到city的最前面" id="b2"/>
+<input type="button" value="将反恐插入到天津后面" id="b3"/>
+<input type="button" value="将反恐插入到天津前面" id="b4"/>
+<input type="button" value="删除北京节点" id="b5"/>
+<input type="button" value="删除city所有的子节点，清空元素中的所有后代节点（不包含属性节点）" id="b6"/>
+
+
+<ul id="city">
+    <li id="bj" name="beijing">北京</li>
+    <li id="tj" name="tianjin">天津</li>
+</ul>
+<ul id="game">
+    <li id="fk" name="fankong">反恐</li>
+    <li id="xj" name="xingji">星际</li>
+</ul>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQuery-事件绑定2</title>
+    <!--在Maven中，利用POM引入jquery，就必须启动项目，jq的语法才能起效-->
+    <script src="webjars/jquery/3.1.1/jquery.min.js"></script>
+
+    <style>
+
+    </style>
+    <script type="text/javascript">
+        <!--入口函数是必备的-->
+        $(function () {
+            //使用on给按钮绑定单击事件click
+            $("#btn1").click(function () {   //注意不能加外面这层，否则click的效果会叠加，形成套娃
+                $("#btn1").on("click",function () {
+                    alert("我被绑定了");
+                });
+             });
+
+            //使用off给按钮解除单击事件
+            $("#btn2").click(function () {
+                // $("#btn1").off("click",function () {
+                //     alert("我被解绑了");
+                // });
+                $("#btn1").off();//将组件上的所有事件全部解绑
+            })
+        });
+    </script>
+</head>
+<body>
+<input type="button" id="btn1" value="使用on绑定点击事件">
+<input type="button" id="btn2" value="使用off解绑点击事件">
+
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQuery-动画</title>
+    <!--在Maven中，利用POM引入jquery，就必须启动项目，jq的语法才能起效-->
+    <script src="webjars/jquery/3.1.1/jquery.min.js"></script>
+
+    <style>
+
+    </style>
+    <script type="text/javascript">
+        function toggleFn() {
+            // $("#div").toggle("slow", "swing", function () {
+            //     alert("状态改变啦！");
+            // })
+
+            // $("#div").slideToggle("slow","linear",function () {
+            //     alert("滑动显示");
+            // })
+
+            $("#div").fadeToggle("slow","linear");
+        }
+
+        function showFn() {
+            // $("#div").show("slow", "swing", function () {
+            //     alert("显示啦！");
+            // })
+
+            // $("#div").slideDown("normal","linear",function () {
+            //     alert("滑动显示");
+            // })
+
+            $("#div").fadeIn("normal","swing");
+        }
+
+        function hideFn() {
+            // $("#div").hide("slow", "swing", function () {
+            //     alert("隐藏啦！");
+            // })
+
+            // $("#div").slideUp("1000","swing",function () {
+            //     alert("滑动隐藏");
+            // })
+
+            $("#div").fadeOut("5000","linear");
+        }
+
+        <!--入口函数是必备的-->
+        $(function () {
+
+        });
+
+    </script>
+</head>
+<body>
+<input type="button" value="点击按钮隐藏div" onclick="hideFn()">
+<input type="button" value="点击按钮显示div" onclick="showFn()">
+<input type="button" value="点击按钮切换div状态" onclick="toggleFn()">
+
+<div id="div" style="width: 100px;height: 100px; background: hotpink">
+    点击按钮显示/隐藏div
+</div>
+
+</body>
+</html>

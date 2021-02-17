@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQuery-事件绑定3</title>
+    <!--在Maven中，利用POM引入jquery，就必须启动项目，jq的语法才能起效-->
+    <script src="webjars/jquery/3.1.1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <!--jQuery Migrate是应用迁移辅助插件，是用于高级版本兼容低级版本辅助插件。-->
+    <script src="webjars/jquery-migrate/1.2.1/jquery-migrate.min.js" type="text/javascript" charset="utf-8"></script>
+    <style>
+
+    </style>
+    <script type="text/javascript">
+        <!--入口函数是必备的-->
+        $(function () {
+            $("#btn").toggle(function () {
+                //改变div背景色为green
+                $("#myDiv").css("backgroundColor", "green");
+            }, function () {
+                //改变div背景色为red
+                $("#myDiv").css("backgroundColor", "red");
+            });
+        });
+    </script>
+</head>
+<body>
+<input type="button" id="btn" value="事件切换">
+<div id="myDiv" style="width: 300px;height: 300px;background: pink">
+    点击按钮变成绿色，再次点击变成红色
+</div>
+
+</body>
+</html>

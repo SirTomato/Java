@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM操作-属性操作</title>
+    <!--在Maven中，利用POM引入jquery，就必须启动项目，jq的语法才能起效-->
+    <script src="webjars/jquery/3.1.1/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        <!--入口函数是必备的-->
+        $(function () {
+            //获取北京节点的name属性值，自定义属性
+            var name = $("#bj").attr("name");
+            alert(name);//北京
+            //设置北京节点的name属性值为dabeijing
+            $("#bj").attr("name","dabeiijng");
+            //新增北京节点的discription属性，值为didu
+            $("#bj").attr("discription","didu");
+            //删除北京节点的name属性并校验name属性是否存在
+            $("#bj").removeAttr("name");
+            //获得hobby的选中状态
+            var checked = $("#hobby").prop("checked");
+            alert(checked);//false
+        })
+    </script>
+
+
+</head>
+<body>
+
+<ul>
+    <li id="bj" name="beijing" xxx="yyy">北京</li>
+    <li id="tj" name="tianjing">天津</li>
+
+    <input type="checkbox" id="hobby">
+</ul>
+
+</body>
+</html>

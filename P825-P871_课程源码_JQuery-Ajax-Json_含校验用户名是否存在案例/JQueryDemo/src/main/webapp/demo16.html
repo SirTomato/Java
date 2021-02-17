@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQuery-遍历</title>
+    <!--在Maven中，利用POM引入jquery，就必须启动项目，jq的语法才能起效-->
+    <script src="webjars/jquery/3.1.1/jquery.min.js"></script>
+
+    <style>
+
+    </style>
+    <script type="text/javascript">
+        <!--入口函数是必备的-->
+        $(function () {
+            //获取ul下所有的li
+            var cities = $("#city li");
+            //遍历li  liar
+/*            for (var i = 0; i < cities.length; i++) {
+                if ("上海"===cities[i].innerHTML){
+                    //break;结束循环
+                    continue;//结束本次循环，继续下次循环
+                }
+                //获取内容
+                alert(i+":"+cities[i].innerText);
+            }*/
+
+            //jq遍历
+            cities.each(function (index,element) {
+                //获取li对象，方式一：this
+                // alert(this.innerHTML);//js方法
+                // alert($(this).html());//jq方法
+                //获取li对象 方式二：在回调函数中定义参数 index索引，element元素对象
+                // alert(index+":"+element.innerHTML);//js方法
+                // alert(index+":"+$(element).html());//jq方法
+
+                //判断如果是上海，则结束循环
+                if ("上海"===$(element).html()){
+                    //如果当前function返回为false，则结束循环break
+                    //如果返回为true，则结束本次循环，则继续下次循环continue
+                    return true;
+                }
+                alert(index+":"+$(element).html());//jq方法
+            });
+
+/*            $.each(cities,function () {
+                alert($(this).html())
+            });
+
+            for(li of cities){
+                alert($(li).html());
+            }*/
+        });
+    </script>
+</head>
+<body>
+    <ul id="city">
+        <li>北京</li>
+        <li>上海</li>
+        <li>天津</li>
+        <li>重庆</li>
+    </ul>
+
+</body>
+</html>

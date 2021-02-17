@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQuery-事件绑定</title>
+    <!--在Maven中，利用POM引入jquery，就必须启动项目，jq的语法才能起效-->
+    <script src="webjars/jquery/3.1.1/jquery.min.js"></script>
+
+    <style>
+
+    </style>
+    <script type="text/javascript">
+        <!--入口函数是必备的-->
+        $(function () {
+            //获取name对象，绑定click事件
+            $("#name").click(function () {
+                alert("我被点击了");
+            });
+            //给name绑定鼠标移动到元素上的事件
+            $("#name").mouseover(function () {
+                alert("鼠标来了");
+            });
+            //给name绑定鼠标移动出的事件
+            $("#name").mouseout(function () {
+                alert("鼠标走了");
+            });
+            //简化操作，链式编程
+            $("#name").mouseover(function () {
+                alert("鼠标来了");
+            }).mouseout(function () {
+                alert("鼠标走了")
+            });
+            $("#name").focus();//让文本输入框获得焦点
+            //表单对象.submit();//让表单提交
+        });
+    </script>
+</head>
+<body>
+<input type="text" id="name" value="绑定点击事件">
+
+</body>
+</html>

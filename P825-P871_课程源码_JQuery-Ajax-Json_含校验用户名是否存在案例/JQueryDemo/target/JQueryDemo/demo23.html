@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JQuery-全局进行方法扩展</title>
+    <!--在Maven中，利用POM引入jquery，就必须启动项目，jq的语法才能起效-->
+    <script src="webjars/jquery/3.1.1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+
+    <script type="text/javascript">
+        //对全局方法扩展2个方法，扩展min/max方法
+        $.extend({
+            max: function (a, b) {
+                //返回两数中的较大值
+                return a >= b ? a : b;
+            },
+            min: function (a, b) {
+                //返回两数中的较小值
+                return a <= b ? a : b;
+            }
+        });
+        //调用全局方法
+        var max = $.max(4,3);
+        alert(max);
+        var min = $.min(1,2);
+        alert(min);
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
